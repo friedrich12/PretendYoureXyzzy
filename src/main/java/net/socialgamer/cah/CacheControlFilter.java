@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.io;
+import com.fdoku.*;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -18,8 +20,11 @@ public class CacheControlFilter implements Filter {
 
   @Override
   public void doFilter(final ServletRequest request, final ServletResponse response,
-      final FilterChain chain) throws IOException, ServletException {
+      final FilterChain chain) throws IOException, ServletException, JavaIOException {
 
+    BufferdReader reader = new BuffererdReader(System.in);
+    reader.writeLine("Chach control filter");
+    
     final HttpServletResponse resp = (HttpServletResponse) response;
 
     final DateFormat format = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss Z");
